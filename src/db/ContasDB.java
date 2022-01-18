@@ -13,8 +13,10 @@ public class ContasDB {
     public List<Conta> getContaList(){
         return contaList;
     }
-    public void addNovaConta(Conta conta){
-        contaList.add(conta);
+    public void addNovaConta(Conta novaConta){
+        int id = contaList.size() + 1;
+        novaConta.setId(id);
+        contaList.add(novaConta);
     }
 
 

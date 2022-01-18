@@ -1,4 +1,5 @@
 import db.ContasDB;
+import models.Conta;
 import models.ContaCorrente;
 import models.ContaPoupanca;
 import models.ContaSalario;
@@ -33,9 +34,11 @@ public class TestaConta {
 
         }
         public static void process(int option) throws Exception {
-        switch (option){
+            Scanner scanner =new Scanner(System.in);
+
+            switch (option){
             case 1: {
-                Scanner scanner =new Scanner(System.in);
+
                 System.out.println("Que tipo de conta voçê deseja criar: ");
                 System.out.println("Poupança digite - 1");
                 System.out.println("Salario digite - 2");
@@ -86,10 +89,31 @@ public class TestaConta {
                         break;
                     }
                     default:
-
                 }
+                break;
             }
-        }
+            case 2: {
+
+                System.out.println("Informe o id da conta");
+                int id = scanner.nextInt();
+                Conta conta = contasDB.getContaList(id);
+                break;
+            }
+            case 3: {
+                break;
+            }
+            case 4: {
+                break;
+            }
+            case 5: {
+                break;
+            }
+            case 6: {
+                break;
+            }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + option);
+            }
         }
 
     }

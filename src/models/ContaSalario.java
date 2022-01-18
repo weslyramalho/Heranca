@@ -4,8 +4,8 @@ import models.Conta;
 public class ContaSalario extends Conta {
     private int quantidadeSaques;
 
-    public ContaSalario(int numero, int agencia, double saldo, int quantidadeSaques) {
-        super(numero, agencia, saldo);
+    public ContaSalario(int id, int numero, double saldo, int quantidadeSaques) {
+        super(id, numero, saldo);
         this.quantidadeSaques = quantidadeSaques;
     }
     @Override

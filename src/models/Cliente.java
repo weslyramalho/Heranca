@@ -4,11 +4,22 @@ package models;
 import utils.Autenticador;
 
 public class Cliente implements Autenticador {
+    private int id;
     private String nome;
     private boolean status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String senha;
 
-    public Cliente(String nome, boolean status, String senha) {
+    public Cliente(int id, String nome, boolean status, String senha) {
+        this.id = id;
         this.nome = nome;
         this.status = status;
         this.senha = senha;

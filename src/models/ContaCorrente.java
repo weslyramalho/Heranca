@@ -3,8 +3,8 @@ package models;
 public class ContaCorrente extends Conta{
     private double chequeEspecial;
 
-    public ContaCorrente(int numero, int agencia, double saldo, double chequeEspecial) {
-        super(numero, agencia,saldo);
+    public ContaCorrente(int id, int numero, double saldo, double chequeEspecial) {
+        super(id, numero,saldo);
         this.chequeEspecial = chequeEspecial;
     }
 

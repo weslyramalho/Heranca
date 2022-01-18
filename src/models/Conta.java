@@ -1,9 +1,17 @@
 package models;
 
 public abstract class Conta {
+    private int id;
     private int numero;
-    private int agencia;
     protected double saldo;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getNumero() {
         return numero;
@@ -13,19 +21,13 @@ public abstract class Conta {
         this.numero = numero;
     }
 
-    public int getAgencia() {
-        return agencia;
-    }
 
-    public Conta(int numero, int agencia, double saldo) {
+    public Conta(int id, int numero, double saldo) {
+        this.id = id;
         this.numero = numero;
-        this.agencia = agencia;
         this.saldo = saldo;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
-    }
 
     public double getSaldo(){
         return this.saldo;
@@ -35,7 +37,7 @@ public abstract class Conta {
     public String toString() {
         return "Conta{" +
                 "numero=" + numero +
-                ", agencia=" + agencia +
+                ", id=" + id +
                 ", saldo=" + saldo +
                 '}';
     }
