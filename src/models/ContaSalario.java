@@ -1,8 +1,11 @@
+package models;
+import models.Conta;
+
 public class ContaSalario extends Conta {
     private int quantidadeSaques;
 
-    public ContaSalario(int numero, int agencia, String banco, double saldo, int quantidadeSaques) {
-        super(numero, agencia, banco, saldo);
+    public ContaSalario(int numero, int agencia, double saldo, int quantidadeSaques) {
+        super(numero, agencia, saldo);
         this.quantidadeSaques = quantidadeSaques;
     }
     @Override

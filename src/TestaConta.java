@@ -1,7 +1,14 @@
+import db.ContasDB;
+import models.ContaCorrente;
+import models.ContaPoupanca;
+import models.ContaSalario;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class TestaConta {
-    public static void main(String[] args){
+    static ContasDB contasDB = new ContasDB();
+    public static void main(String[] args) throws Exception{
 
         System.out.println("*** BANCO DEV ***");
         System.out.println("Menu de opções:");
@@ -18,6 +25,8 @@ public class TestaConta {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Escolha uma opção: ");
             option = scanner.nextInt();
+            process(option);
+
 
         } while (option != 7);
 
@@ -27,8 +36,58 @@ public class TestaConta {
         switch (option){
             case 1: {
                 Scanner scanner =new Scanner(System.in);
-                System.out.println("Digite o numero da conta: ");
-                int numero = scanner.nextInt();
+                System.out.println("Que tipo de conta voçê deseja criar: ");
+                System.out.println("Poupança digite - 1");
+                System.out.println("Salario digite - 2");
+                System.out.println("Corrente digite - 3");
+                int op = scanner.nextInt();
+                switch (op) {
+                    case 1:
+                        System.out.println("Digite o numero da conta: ");
+                        int numero = scanner.nextInt();
+                        System.out.println("Digite o numero da Agencia: ");
+                        int agencia = scanner.nextInt();
+                        System.out.println("Digite o Saldo: ");
+                        double saldo = scanner.nextDouble();
+                        System.out.println("Digite o dia do Aniversario da conta: ");
+                        int diaAniversario = scanner.nextInt();
+                        System.out.println("Digite a taxa de juros: ");
+                        double taxaJuros = scanner.nextDouble();
+
+                        contasDB.addNovaConta(new ContaPoupanca(numero, agencia, saldo, diaAniversario, taxaJuros));
+                        System.out.println("Conta Poupança criada criada com sucesso!");
+                        break;
+                    case 2: {
+                        System.out.println("Digite o numero da conta: ");
+                        numero = scanner.nextInt();
+                        System.out.println("Digite o numero da Agencia: ");
+                        agencia = scanner.nextInt();
+                        System.out.println("Digite o Saldo: ");
+                        saldo = scanner.nextDouble();
+                        System.out.println("Digite o dia do Aniversario da conta: ");
+                        int quantidadeSaques = scanner.nextInt();
+
+                        contasDB.addNovaConta(new ContaSalario(numero, agencia, saldo, quantidadeSaques));
+                        System.out.println("Conta Salario criada criada com sucesso!");
+                        break;
+                    }
+                    case 3:{
+                        System.out.println("Digite o numero da conta: ");
+                        numero = scanner.nextInt();
+                        System.out.println("Digite o numero da Agencia: ");
+                        agencia = scanner.nextInt();
+                        System.out.println("Digite o Saldo: ");
+                        saldo = scanner.nextDouble();
+                        System.out.println("Digite o dia do Aniversario da conta: ");
+                        double chequeEspecial = scanner.nextDouble();
+
+                        contasDB.addNovaConta(new ContaCorrente(numero, agencia, saldo, chequeEspecial));
+                        System.out.println("Conta Corrente criada criada com sucesso!");
+                        break;
+                    }
+                    default:
+
+                }
             }
         }
         }

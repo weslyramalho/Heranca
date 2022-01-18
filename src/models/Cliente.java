@@ -1,4 +1,9 @@
-public class Cliente implements Autenticador{
+package models;
+
+
+import utils.Autenticador;
+
+public class Cliente implements Autenticador {
     private String nome;
     private boolean status;
     private String senha;
