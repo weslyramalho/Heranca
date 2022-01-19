@@ -1,19 +1,27 @@
 package models;
 
-public class ContaCorrente extends Conta{
+public class ContaCorrente extends Conta implements Tributavel{
     private double chequeEspecial;
 
-    public ContaCorrente(int id, int numero, double saldo, double chequeEspecial) {
-        super(id, numero,saldo);
-        this.chequeEspecial = chequeEspecial;
+    @Override
+    public double Imposto(double tax) {
+        tax = 0.03 * getSaldo();
+        return tax;
     }
 
     @Override
     public String toString() {
         return "ContaCorrente{" +
-                "chequeEspecial=" + chequeEspecial +
+                "saldo=" + saldo +
+                ", chequeEspecial=" + chequeEspecial +
                 '}';
     }
+
+    public ContaCorrente(int numero, double saldo, Cliente cliente, double chequeEspecial) {
+        super(numero, saldo, cliente);
+        this.chequeEspecial = chequeEspecial;
+    }
+
     @Override
     public boolean sacar(double quantia){
         double disponivel = this.chequeEspecial + this.saldo;
