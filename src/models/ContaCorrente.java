@@ -11,8 +11,9 @@ public class ContaCorrente extends Conta implements Tributavel{
 
     @Override
     public String toString() {
-        return "ContaCorrente{" +
-                "saldo=" + saldo +
+        return "ContaCorrente{ numero: "+ getNumero() + ", "+
+                  getCliente() +
+                ", saldo=" + saldo +
                 ", chequeEspecial=" + chequeEspecial +
                 '}';
     }

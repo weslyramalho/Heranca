@@ -1,18 +1,29 @@
-import db.ContasDB;
-import models.Conta;
-import models.ContaCorrente;
-import models.ContaPoupanca;
-import models.ContaSalario;
+
+import models.*;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class TestaConta {
-    static ContasDB contasDB = new ContasDB();
-    public static void main(String[] args) throws Exception{
+    List<Conta> contasDB = new ArrayList<Conta>();
+    public static void main(String[] args) throws Exception {
+        String nome = "Joao";
+        String nome2 = "Maria";
+        Cliente cliente = new Cliente(nome);
 
-        System.out.println("*** BANCO DEV ***");
+        ContaCorrente cc = new ContaCorrente(1, 100, cliente, 100);
+        ContaSalario cs = new ContaSalario(2, 58, cliente, 2);
+        ContaPoupanca cp = new ContaPoupanca(3, 500, cliente, 7, 2);
+        System.out.println(cc);
+        System.out.println(cs);
+        System.out.println(cp);
+
+
+
+       /* System.out.println("*** BANCO DEV ***");
         System.out.println("Menu de opções:");
         int option;
         do {
@@ -49,8 +60,8 @@ public class TestaConta {
                     case 1:
                         System.out.println("Digite o numero da conta: ");
                         int numero = scanner.nextInt();
-                        System.out.println("Digite o numero da Agencia: ");
-                        int agencia = scanner.nextInt();
+                        System.out.println("Digite o nome do cliente: ");
+                        String cliente = scanner.next();
                         System.out.println("Digite o Saldo: ");
                         double saldo = scanner.nextDouble();
                         System.out.println("Digite o dia do Aniversario da conta: ");
@@ -58,7 +69,7 @@ public class TestaConta {
                         System.out.println("Digite a taxa de juros: ");
                         double taxaJuros = scanner.nextDouble();
 
-                        contasDB.addNovaConta(new ContaPoupanca(numero, agencia, saldo, diaAniversario, taxaJuros));
+                        contasDB.add(new ContaPoupanca(numero, saldo, cliente, diaAniversario, taxaJuros));
                         System.out.println("Conta Poupança criada criada com sucesso!");
                         break;
                     case 2: {
@@ -118,6 +129,8 @@ public class TestaConta {
                 default:
                     throw new IllegalStateException("Unexpected value: " + option);
             }
+
+        **/
         }
 
     }

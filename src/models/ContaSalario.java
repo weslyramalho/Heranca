@@ -5,6 +5,15 @@ public class ContaSalario extends Conta implements Tributavel{
     private int quantidadeSaques;
 
     @Override
+    public String toString() {
+        return "ContaSalario{ numero: " + getNumero() + ", "
+                + getCliente() +
+                ", saldo=" + saldo +
+                ", quantidadeSaques=" + quantidadeSaques +
+                '}';
+    }
+
+    @Override
     public double Imposto(double tax) {
         tax = 0.02 * getSaldo();
         return tax;
@@ -15,14 +24,7 @@ public class ContaSalario extends Conta implements Tributavel{
         this.quantidadeSaques = quantidadeSaques;
     }
 
-    @Override
-    public String toString(){
-        return super.toString() + " ContaSalario{" +
-                "quantidadeSaques=" + quantidadeSaques +
-                '}';
-    }
 
-    @Override
     public double getSaldo() {
         return this.saldo;
     }

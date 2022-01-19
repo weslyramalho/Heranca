@@ -6,6 +6,22 @@ public abstract class Conta {
 
     private Cliente cliente;
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public Conta(int numero, double saldo, Cliente cliente) {
         this.numero = numero;
         this.saldo = saldo;
@@ -16,6 +32,7 @@ public abstract class Conta {
     public String toString() {
         return "Conta{" +
                 "numero=" + numero +
+                ", " + getCliente() +
                 ", saldo=" + saldo +
                 '}';
     }
