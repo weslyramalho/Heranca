@@ -8,6 +8,7 @@ import java.util.*;
 public class TestaConta {
     static ContasDB contasDB = new ContasDB();
     public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
 
         String nome = "Joao";
         String nome2 = "Maria";
@@ -16,8 +17,30 @@ public class TestaConta {
        // contasDB.addConta(new ContaPoupanca(3, 500, cliente, 7, 2));
        // contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
         //contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
-       contasDB.addConta(new ContaCorrente(3, 1000, cliente, 7));
+        contasDB.addConta(new ContaCorrente(3, 1000, cliente, 7));
         contasDB.addConta(new ContaSalario(5,1000, cliente, 2));
+
+        Conta conta = (Conta) contasDB.getContasList();
+
+        double quantia = 0;
+        System.out.println("Entre com os dados da conta para tranferencia");
+        System.out.println("Digite o numero da conta que deseja Retirar o Valor");
+        int numeroa = sc.nextInt();
+        System.out.println("Digite o numero da conta que deseja Transferir o valor");
+        int numerob = sc.nextInt();
+        System.out.println("Digite o valor que deseja Transferir");
+        quantia = sc.nextDouble();
+
+        for(Conta contas : contasDB.getContasList()) {
+            contas.getNumero().set
+            if (quantia <= conta.getSaldo()) {
+                conta.sacar(quantia);
+                conta.depositar(quantia);
+            } else {
+                System.out.println("Saldo insuficiente");
+            }
+        }
+
 
 
 
@@ -144,6 +167,7 @@ public class TestaConta {
 
         **/
         }
+
 
     }
 

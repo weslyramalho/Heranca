@@ -48,8 +48,4 @@ public abstract class Conta {
         this.saldo += quantia;
     }
 
-    public void transferencia(double quantia) {
-        this.saldo -= quantia;
-    }
-
 }
