@@ -5,7 +5,7 @@ public class ContaCorrente extends Conta implements Tributavel{
 
     @Override
     public double Imposto(double tax) {
-        tax = 0.03 * getSaldo();
+        tax = 0.03 * saldo;
         return tax;
     }
 
@@ -36,7 +36,7 @@ public class ContaCorrente extends Conta implements Tributavel{
         }
     }
     public double getSaldo(){
-        return this.chequeEspecial + this.saldo;
+        return this.chequeEspecial + this.saldo - this.Imposto(3);
     }
 
 

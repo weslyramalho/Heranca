@@ -15,7 +15,7 @@ public class ContaSalario extends Conta implements Tributavel{
 
     @Override
     public double Imposto(double tax) {
-        tax = 0.02 * getSaldo();
+        tax = 0.02 * saldo;
         return tax;
     }
 
@@ -26,7 +26,7 @@ public class ContaSalario extends Conta implements Tributavel{
 
 
     public double getSaldo() {
-        return this.saldo;
+        return this.saldo - this.Imposto(2);
     }
 
     @Override

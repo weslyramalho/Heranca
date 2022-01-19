@@ -1,25 +1,37 @@
 
+import db.ContasDB;
 import models.*;
 
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestaConta {
-    List<Conta> contasDB = new ArrayList<Conta>();
+    static ContasDB contasDB = new ContasDB();
     public static void main(String[] args) throws Exception {
+
         String nome = "Joao";
         String nome2 = "Maria";
         Cliente cliente = new Cliente(nome);
 
-        ContaCorrente cc = new ContaCorrente(1, 100, cliente, 100);
-        ContaSalario cs = new ContaSalario(2, 58, cliente, 2);
-        ContaPoupanca cp = new ContaPoupanca(3, 500, cliente, 7, 2);
-        System.out.println(cc);
-        System.out.println(cs);
-        System.out.println(cp);
+       // contasDB.addConta(new ContaPoupanca(3, 500, cliente, 7, 2));
+       // contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
+        //contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
+       contasDB.addConta(new ContaCorrente(3, 1000, cliente, 7));
+        contasDB.addConta(new ContaSalario(5,1000, cliente, 2));
+
+
+
+        double total= 0;
+        for(Iterator<Conta> cont = contasDB.getContasList().iterator();
+        cont.hasNext();){
+            Conta contaAtual = cont.next();
+            total += contaAtual.getSaldo();
+
+
+            }
+        System.out.println(total);
+
+
 
 
 

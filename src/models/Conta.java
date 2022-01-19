@@ -6,6 +6,10 @@ public abstract class Conta {
 
     private Cliente cliente;
 
+    public double getSaldo() {
+        return saldo;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -43,4 +47,9 @@ public abstract class Conta {
     public void depositar(double quantia){
         this.saldo += quantia;
     }
+
+    public void transferencia(double quantia) {
+        this.saldo -= quantia;
+    }
+
 }

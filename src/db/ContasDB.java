@@ -1,0 +1,20 @@
+package db;
+
+import models.Conta;
+import models.ContaSalario;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ContasDB {
+    private List<Conta> contasList = new ArrayList<>();
+
+    public List<Conta> getContasList(){
+        return contasList;
+    }
+
+    public void addConta(Conta novaConta){
+        contasList.add(novaConta);
+    }
+
+}
