@@ -4,6 +4,7 @@ import models.ContaCorrente;
 import models.ContaPoupanca;
 import models.ContaSalario;
 
+import java.sql.SQLOutput;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -97,6 +98,9 @@ public class TestaConta {
                 System.out.println("Informe o id da conta");
                 int id = scanner.nextInt();
                 Conta conta = contasDB.getContaList(id);
+                System.out.println("Quanto deseja sacar");
+                double quantia = scanner.nextDouble();
+                conta.sacar(quantia);
                 break;
             }
             case 3: {

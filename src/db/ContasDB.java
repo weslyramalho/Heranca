@@ -11,6 +11,10 @@ public class ContasDB {
     private List<Conta> contaList = new ArrayList<>();
 
     public List<Conta> getContaList(){
+        List<Conta> contas = new ArrayList<>();
+        for (Map.Entry<Integer, Conta> conta : contas.entrySet()){
+            contas.add(conta.getValue());
+        }
         return contaList;
     }
     public void addNovaConta(Conta novaConta){
