@@ -1,13 +1,20 @@
 package models;
 import models.Conta;
 
-public class ContaSalario extends Conta {
+public class ContaSalario extends Conta implements Tributavel{
     private int quantidadeSaques;
 
-    public ContaSalario(int id, int numero, double saldo, int quantidadeSaques) {
-        super(id, numero, saldo);
+    @Override
+    public double Imposto(double tax) {
+        tax = 0.02 * getSaldo();
+        return tax;
+    }
+
+    public ContaSalario(int numero, double saldo, Cliente cliente, int quantidadeSaques) {
+        super(numero, saldo, cliente);
         this.quantidadeSaques = quantidadeSaques;
     }
+
     @Override
     public String toString(){
         return super.toString() + " ContaSalario{" +
