@@ -11,30 +11,7 @@ public class TestaConta {
     static ClientesDb clientesDb = new ClientesDb();
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-
-        double quantia = 0;
-        System.out.println("Entre com os dados da conta para tranferencia");
-        System.out.println("Digite o numero da conta que deseja Retirar o Valor");
-        int numero = sc.nextInt();
-        System.out.println("Digite o valor que deseja Transferir");
-        quantia = sc.nextDouble();
-        System.out.println("Digite o numero da conta que deseja Transferir o valor");
-        int numero2 = sc.nextInt();
-        Conta conta1 = (Conta) contasDB.getContaPorNumero(numero);
-        conta1.sacar(quantia);
-        Conta conta2 = (Conta) contasDB.getContaPorNumero(numero2);
-        conta2.depositar(quantia);
-        System.out.println("Trasferencia realizada com sucesso");
-        System.out.println(conta2.getSaldo());
-
-
-
-
-
-
-
-
-
+        
         double total= 0;
         for(Iterator<Conta> cont = contasDB.getContasList().iterator();
         cont.hasNext();){
@@ -91,7 +68,7 @@ public class TestaConta {
                         break;
                     }
                     case 3:{
-
+                        contaCorrente();
                         break;
                     }
                     default:
@@ -99,13 +76,22 @@ public class TestaConta {
                 break;
             }
             case 2: {
-
-                System.out.println("Informe o id da conta");
-                int id = scanner.nextInt();
-                Conta conta = contasDB.getContaList(id);
-                System.out.println("Quanto deseja sacar");
+                System.out.println("Entre com os dados da conta para tranferencia");
+                System.out.println("Digite o numero da conta que deseja Retirar o Valor");
+                int numero = scanner.nextInt();
+                System.out.println("Digite o valor que deseja Transferir");
                 double quantia = scanner.nextDouble();
-                conta.sacar(quantia);
+                System.out.println("Digite o numero da conta que deseja Transferir o valor");
+                int numero2 = scanner.nextInt();
+                Conta conta1 = (Conta) contasDB.getContaPorNumero(numero);
+                conta1.sacar(quantia);
+                Conta conta2 = (Conta) contasDB.getContaPorNumero(numero2);
+                conta2.depositar(quantia);
+                System.out.println("Trasferencia realizada com sucesso");
+                System.out.println(conta2.getSaldo());
+
+
+
                 break;
             }
             case 3: {
@@ -173,7 +159,7 @@ public class TestaConta {
         clientesDb.addNovoCliente(new Cliente(nome));
         Cliente cliente = (Cliente) clientesDb.getClientePorNome(nome);
         contasDB.addConta(new ContaCorrente(numero, saldo, cliente, chequeEspecial));
-        System.out.println("Conta Salario criada criada com sucesso!");
+        System.out.println("Conta corrente criada criada com sucesso!");
     }
 
 
