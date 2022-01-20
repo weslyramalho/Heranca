@@ -14,20 +14,6 @@ public class TestaConta {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
 
-        double total= 0;
-        for(Iterator<Conta> cont = contasDB.getContasList().iterator();
-        cont.hasNext();){
-            Conta contaAtual = cont.next();
-            total += contaAtual.getSaldo();
-
-
-            }
-        System.out.println(total);
-
-
-
-
-
         System.out.println("*** BANCO DEV ***");
         System.out.println("Menu de opções:");
         int option;
@@ -35,10 +21,9 @@ public class TestaConta {
             System.out.println("1 - Criar conta");
             System.out.println("2 - Sacar");
             System.out.println("3 - Depositar");
-            System.out.println("4 - Criar Cliente");
-            System.out.println("5 - Transferir valores");
-            System.out.println("6 - Mostrar montantes disponivel nas contas");
-            System.out.println("7 - Sair");
+            System.out.println("4 - Transferir valores");
+            System.out.println("5 - Mostrar montantes disponivel nas contas");
+            System.out.println("6 - Sair");
 
             Scanner scanner = new Scanner(System.in);
             System.out.println("Escolha uma opção: ");
@@ -86,13 +71,11 @@ public class TestaConta {
                 break;
             }
             case 4: {
-                break;
-            }
-            case 5: {
                 transferencia();
                 break;
             }
-            case 6: {
+            case 5: {
+                caixa();
                 break;
             }
                 default:
@@ -185,6 +168,17 @@ public class TestaConta {
         double quantia = scanner.nextDouble();
         Conta conta = (Conta) contasDB.getContaPorNumero(numero);
         conta.depositar(quantia);
+    }
+    public static void caixa(){
+        Scanner sc = new Scanner(System.in);
+        double total= 0;
+        for(Iterator<Conta> cont = contasDB.getContasList().iterator();
+            cont.hasNext();){
+            Conta contaAtual = cont.next();
+            total += contaAtual.getSaldo();
+
+        }
+        System.out.println(total);
     }
 
 
