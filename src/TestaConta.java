@@ -78,10 +78,11 @@ public class TestaConta {
                 break;
             }
             case 2: {
-
+                sacar();
                 break;
             }
             case 3: {
+                depositar();
                 break;
             }
             case 4: {
@@ -176,7 +177,15 @@ public class TestaConta {
         conta.sacar(quantia);
 
     }
-    
+    public static void depositar(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual o numero da conta: ");
+        int numero = scanner.nextInt();
+        System.out.println("Quanto deseja sacar: ");
+        double quantia = scanner.nextDouble();
+        Conta conta = (Conta) contasDB.getContaPorNumero(numero);
+        conta.depositar(quantia);
+    }
 
 
 
