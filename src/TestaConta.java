@@ -59,7 +59,7 @@ public class TestaConta {
 
 
 
-       /* System.out.println("*** BANCO DEV ***");
+        System.out.println("*** BANCO DEV ***");
         System.out.println("Menu de opções:");
         int option;
         do {
@@ -97,13 +97,14 @@ public class TestaConta {
                         System.out.println("Digite o numero da conta: ");
                         int numero = scanner.nextInt();
                         System.out.println("Digite o nome do cliente: ");
-                        String cliente = scanner.next();
+                        String nome = scanner.next();
                         System.out.println("Digite o Saldo: ");
                         double saldo = scanner.nextDouble();
                         System.out.println("Digite o dia do Aniversario da conta: ");
                         int diaAniversario = scanner.nextInt();
                         System.out.println("Digite a taxa de juros: ");
                         double taxaJuros = scanner.nextDouble();
+                        Cliente cliente = new Cliente(nome);
 
                         contasDB.add(new ContaPoupanca(numero, saldo, cliente, diaAniversario, taxaJuros));
                         System.out.println("Conta Poupança criada criada com sucesso!");
@@ -111,14 +112,15 @@ public class TestaConta {
                     case 2: {
                         System.out.println("Digite o numero da conta: ");
                         numero = scanner.nextInt();
-                        System.out.println("Digite o numero da Agencia: ");
-                        agencia = scanner.nextInt();
+                        System.out.println("Digite o nome do cliente: ");
+                        String nome = scanner.nextLine();
                         System.out.println("Digite o Saldo: ");
                         saldo = scanner.nextDouble();
                         System.out.println("Digite o dia do Aniversario da conta: ");
                         int quantidadeSaques = scanner.nextInt();
+                        cliente.getNome(nome);
 
-                        contasDB.addNovaConta(new ContaSalario(numero, agencia, saldo, quantidadeSaques));
+                        contasDB.addNovaConta(new ContaSalario(numero, cliente, saldo, quantidadeSaques));
                         System.out.println("Conta Salario criada criada com sucesso!");
                         break;
                     }
@@ -166,7 +168,6 @@ public class TestaConta {
                     throw new IllegalStateException("Unexpected value: " + option);
             }
 
-        **/
         }
 
 
