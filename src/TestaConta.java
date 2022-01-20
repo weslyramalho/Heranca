@@ -20,26 +20,27 @@ public class TestaConta {
         contasDB.addConta(new ContaCorrente(3, 1000, cliente, 7));
         contasDB.addConta(new ContaSalario(5,1000, cliente, 2));
 
-        Conta conta = (Conta) contasDB.getContasList();
+
 
         double quantia = 0;
         System.out.println("Entre com os dados da conta para tranferencia");
         System.out.println("Digite o numero da conta que deseja Retirar o Valor");
-        int numeroa = sc.nextInt();
-        System.out.println("Digite o numero da conta que deseja Transferir o valor");
-        int numerob = sc.nextInt();
+        int numero = sc.nextInt();
         System.out.println("Digite o valor que deseja Transferir");
         quantia = sc.nextDouble();
+        System.out.println("Digite o numero da conta que deseja Transferir o valor");
+        int numero2 = sc.nextInt();
+        Conta conta1 = (Conta) contasDB.getContaPorNumero(numero);
+        conta1.sacar(quantia);
+        Conta conta2 = (Conta) contasDB.getContaPorNumero(numero2);
+        conta2.depositar(quantia);
+        System.out.println("Trasferencia realizada com sucesso");
+        System.out.println(conta2.getSaldo());
 
-        for(Conta contas : contasDB.getContasList()) {
-            contas.getNumero().set
-            if (quantia <= conta.getSaldo()) {
-                conta.sacar(quantia);
-                conta.depositar(quantia);
-            } else {
-                System.out.println("Saldo insuficiente");
-            }
-        }
+
+
+
+
 
 
 
