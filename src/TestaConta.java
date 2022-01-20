@@ -1,4 +1,5 @@
 
+import db.ClientesDb;
 import db.ContasDB;
 import models.*;
 
@@ -7,20 +8,9 @@ import java.util.*;
 
 public class TestaConta {
     static ContasDB contasDB = new ContasDB();
+    static ClientesDb clientesDb = new ClientesDb();
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-
-        String nome = "Joao";
-        String nome2 = "Maria";
-        Cliente cliente = new Cliente(nome);
-
-       // contasDB.addConta(new ContaPoupanca(3, 500, cliente, 7, 2));
-       // contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
-        //contasDB.addConta(new ContaPoupanca(3, 1000, cliente, 7, 2));
-        contasDB.addConta(new ContaCorrente(3, 1000, cliente, 7));
-        contasDB.addConta(new ContaSalario(5,1000, cliente, 2));
-
-
 
         double quantia = 0;
         System.out.println("Entre com os dados da conta para tranferencia");
@@ -94,48 +84,14 @@ public class TestaConta {
                 int op = scanner.nextInt();
                 switch (op) {
                     case 1:
-                        System.out.println("Digite o numero da conta: ");
-                        int numero = scanner.nextInt();
-                        System.out.println("Digite o nome do cliente: ");
-                        String nome = scanner.next();
-                        System.out.println("Digite o Saldo: ");
-                        double saldo = scanner.nextDouble();
-                        System.out.println("Digite o dia do Aniversario da conta: ");
-                        int diaAniversario = scanner.nextInt();
-                        System.out.println("Digite a taxa de juros: ");
-                        double taxaJuros = scanner.nextDouble();
-                        Cliente cliente = new Cliente(nome);
-
-                        contasDB.add(new ContaPoupanca(numero, saldo, cliente, diaAniversario, taxaJuros));
-                        System.out.println("Conta Poupança criada criada com sucesso!");
+                        contaPoupanca();
                         break;
                     case 2: {
-                        System.out.println("Digite o numero da conta: ");
-                        numero = scanner.nextInt();
-                        System.out.println("Digite o nome do cliente: ");
-                        String nome = scanner.nextLine();
-                        System.out.println("Digite o Saldo: ");
-                        saldo = scanner.nextDouble();
-                        System.out.println("Digite o dia do Aniversario da conta: ");
-                        int quantidadeSaques = scanner.nextInt();
-                        cliente.getNome(nome);
-
-                        contasDB.addNovaConta(new ContaSalario(numero, cliente, saldo, quantidadeSaques));
-                        System.out.println("Conta Salario criada criada com sucesso!");
+                        contaSalario();
                         break;
                     }
                     case 3:{
-                        System.out.println("Digite o numero da conta: ");
-                        numero = scanner.nextInt();
-                        System.out.println("Digite o numero da Agencia: ");
-                        agencia = scanner.nextInt();
-                        System.out.println("Digite o Saldo: ");
-                        saldo = scanner.nextDouble();
-                        System.out.println("Digite o dia do Aniversario da conta: ");
-                        double chequeEspecial = scanner.nextDouble();
 
-                        contasDB.addNovaConta(new ContaCorrente(numero, agencia, saldo, chequeEspecial));
-                        System.out.println("Conta Corrente criada criada com sucesso!");
                         break;
                     }
                     default:
@@ -169,6 +125,57 @@ public class TestaConta {
             }
 
         }
+        public static void contaPoupanca(){
+        Scanner scanner = new Scanner(System.in);
+            System.out.println("Digite o numero da conta: ");
+            int numero = scanner.nextInt();
+            System.out.println("Digite o nome do cliente: ");
+            String nome = scanner.next();
+            System.out.println("Digite o Saldo: ");
+            double saldo = scanner.nextDouble();
+            System.out.println("Digite o dia do Aniversario da conta: ");
+            int diaAniversario = scanner.nextInt();
+            System.out.println("Digite a taxa de juros: ");
+            double taxaJuros = scanner.nextDouble();
+
+            clientesDb.addNovoCliente(new Cliente(nome));
+            Cliente cliente = (Cliente) clientesDb.getClientePorNome(nome);
+            contasDB.addConta(new ContaPoupanca(numero, saldo, cliente, diaAniversario, taxaJuros));
+            System.out.println("Conta Poupança criada criada com sucesso!");
+        }
+    public static void contaSalario() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o numero da conta: ");
+        int numero = scanner.nextInt();
+        System.out.println("Digite o nome do cliente: ");
+        String nome = scanner.nextLine();
+        System.out.println("Digite o Saldo: ");
+        double saldo = scanner.nextDouble();
+        System.out.println("Digite o dia do Aniversario da conta: ");
+        int quantidadeSaques = scanner.nextInt();
+
+        clientesDb.addNovoCliente(new Cliente(nome));
+        Cliente cliente = (Cliente) clientesDb.getClientePorNome(nome);
+        contasDB.addConta(new ContaSalario(numero, saldo, cliente, quantidadeSaques));
+        System.out.println("Conta Salario criada criada com sucesso!");
+    }
+    public static void contaCorrente() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o numero da conta: ");
+        int numero = scanner.nextInt();
+        System.out.println("Digite o nome do cliente: ");
+        String nome = scanner.nextLine();
+        System.out.println("Digite o Saldo: ");
+        double saldo = scanner.nextDouble();
+        System.out.println("Cheque especial : ");
+        double chequeEspecial = scanner.nextInt();
+
+        clientesDb.addNovoCliente(new Cliente(nome));
+        Cliente cliente = (Cliente) clientesDb.getClientePorNome(nome);
+        contasDB.addConta(new ContaCorrente(numero, saldo, cliente, chequeEspecial));
+        System.out.println("Conta Salario criada criada com sucesso!");
+    }
+
 
 
     }

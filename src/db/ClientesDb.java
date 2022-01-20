@@ -8,6 +8,14 @@ import java.util.List;
 public class ClientesDb {
     private List<Cliente> clientesList = new ArrayList<>();
 
+    public ClientesDb(List<Cliente> clientesList) {
+        this.clientesList = clientesList;
+    }
+
+    public ClientesDb() {
+
+    }
+
     public List<Cliente> getClientesList(){
         return clientesList;
     }
